@@ -13,9 +13,10 @@ Created on Thu Feb 5
 
 # Importação de pacotes para usar este script
 import numpy as np
-import matplotlib as pl
+import matplotlib.pyplot as plt
 
 def timeSeriesPlot(arr):
+    
     """
     
     Parameters
@@ -36,4 +37,16 @@ def timeSeriesPlot(arr):
     """
     
     # Média no eixo 1
+    arr_average = np.mean(arr,axis=1)
     
+    # Criando uma figura
+    fig, ax = plt.subplots(2)
+    
+    # Plotando a média e dados brutos
+    ax[0].plot(arr_average)
+    ax[1].plot(arr)
+    
+    fig.savefig(r"C:\minicurso_LABHIDRO\figuras"+"/timeSeriesPlot.png", dpi = 300)
+    
+    return fig, arr_average
+
